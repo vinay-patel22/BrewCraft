@@ -5,9 +5,13 @@ import TabNavigator from './src/navigators/TabNavigator';
 import DetailsScreen from './src/screens/DetailsScreen';
 import PaymentScreen from './src/screens/PaymentScreen';
 import SplashScreen from 'react-native-splash-screen';
+
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+const App = () => {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -16,20 +20,16 @@ export default function App() {
           component={TabNavigator}
           options={{ animation: 'slide_from_bottom' }}></Stack.Screen>
         <Stack.Screen
-          name='Details'
+          name="Details"
           component={DetailsScreen}
-          options={{ animation: 'slide_from_bottom' }}
-        ></Stack.Screen>
+          options={{ animation: 'slide_from_bottom' }}></Stack.Screen>
         <Stack.Screen
-          name='Payment'
+          name="Payment"
           component={PaymentScreen}
-          options={{ animation: 'slide_from_bottom' }}
-        ></Stack.Screen>
-
+          options={{ animation: 'slide_from_bottom' }}></Stack.Screen>
       </Stack.Navigator>
-    </NavigationContainer >
-  )
-}
+    </NavigationContainer>
+  );
+};
 
-
-
+export default App;
